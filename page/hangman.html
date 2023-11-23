@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Oswald&family=Pixelify+Sans&family=Tektur&display=swap" rel="stylesheet">
+  <title>hangman-web</title>
+</head>
+
+<body class="backgrounddog">
+
+  <div id="main">
+    <div class="response">
+      {{if (ne .Attempts 0)}}
+      <img class="doggo" src="../img/Sprite-000{{.Attempts}}.png" alt="combat">
+      {{end}}
+      <div class="forme">
+        <h2 id="hidden_word">{{.DisplayedWord}}</h2>
+
+        <form class="lune" method="POST">
+          <label class="prop"> </label>
+          <div class="try">
+            <input id="input" type="text" name="user_input" autofocus>
+            <input id="btn" type="submit" value="TRY">
+          </div>
+        </form>
+        <a class="retour" href="/">RETOUR</a>
+      </div>
+      <h3 class="att">{{.Attempts}}/10</h3>
+      <h3 class="propo"> {{.LatestPropositions}}</h3>
+
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
