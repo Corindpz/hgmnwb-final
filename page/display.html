@@ -1,0 +1,30 @@
+{{define "result"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gabarito&family=Oswald&family=Pixelify+Sans&family=Tektur&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Result</title>
+</head>
+
+<body class="display">
+    {{if .Won}}
+    <img class="resme" src="../img/Pp3or5G.png" alt="">
+    {{else if .Lost}}
+    <img class="resme" src="../img/Pp3o5G.png" alt="">
+    {{end}}
+    <img class="gael" src="../img/ds.gif" alt="">
+    <p class="flex">WORD : {{.Word}}</p>
+</body>
+
+</html>
+{{end}}

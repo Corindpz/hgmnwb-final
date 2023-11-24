@@ -9,6 +9,27 @@ import (
 
 var hangman Hangman
 var tmpl2 *template.Template
+var tmpl3 *template.Template
+
+func resultHandler(w http.ResponseWriter, r *http.Request) {
+  wordGuess := string(hangman.HiddenWord) == hangman.WordToGuess
+  lost := hangman.Attempts >= 10
+
+  date := struct {
+    Won bool
+    Lost bool
+    Word string
+  }{
+    Won : wordGuess,
+    Lost : lost,
+    Word : hangman.WordToGuess,
+  }
+
+  err := tmpl3.ExecuteTemplate(w, "result", date)
+  if err != nil{
+    http.Error(w, err.Error(), http.StatusBadRequest)
+  }
+}
 
 func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 	queryParams := r.URL.Query()
@@ -35,6 +56,19 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
         LoadWords(os.Args[1])
       }
          InitHangman()
+         fmt.Println(hangman.WordToGuess)
+        } else {
+          wordGuess := string(hangman.HiddenWord) == hangman.WordToGuess
+          lost := hangman.Attempts >= 10
+
+          fmt.Println(hangman.HiddenWord)
+          fmt.Println(hangman.WordToGuess)
+          fmt.Println(wordGuess)
+          fmt.Println(lost)
+
+          if wordGuess || lost {
+            http.Redirect(w, r ,"/result" , http.StatusSeeOther)
+          }
         }
 
     tmpl2.Execute(w, hangman)
@@ -45,7 +79,7 @@ func main() {
 
   tmpl := template.Must(template.ParseFiles("../index.html"))
   tmpl2 = template.Must(template.ParseFiles("../page/hangman.html"))
-
+  tmpl3 = template.Must(template.ParseFiles("../page/display.html"))
   fs := http.FileServer(http.Dir("../css"))
   http.Handle("/css/", http.StripPrefix("/css/", fs))
 
@@ -58,6 +92,8 @@ func main() {
   })
 
   http.HandleFunc("/page/hangman", hangmanHandler)
+
+  http.HandleFunc("/result" , resultHandler)
 
   http.ListenAndServe(":80", nil)
 }

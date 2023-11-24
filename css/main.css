@@ -10,8 +10,38 @@
 }
 
 body {
-	background-color: blanchedalmond;
+	background-color: black;
 	height: 100vh;
+	overflow: hidden;
+}
+
+.resme {
+	position: absolute;
+	top: 15%;
+	left: 41.5%;
+}
+
+.flex {
+	position: absolute;
+	margin-top: 5rem;
+	top: 35%;
+	left: 45%;
+}
+
+.display {
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.gael {
+	transform: scale(2);
+	position: absolute;
+	left: 27%;
+	top: 39%;
 }
 
 .back {
