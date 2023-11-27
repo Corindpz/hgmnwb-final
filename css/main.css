@@ -38,6 +38,7 @@ body {
 
 .restart:hover {
 	transform: scale(1.2);
+	animation: blink 0s infinite;
 }
 
 #encre {
