@@ -21,6 +21,25 @@ body {
 	left: 41.5%;
 }
 
+.restart {
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	text-decoration: none;
+	color: white;
+
+}
+
+.restart:hover {
+	transform: scale(1.2);
+}
+
+#encre {
+	position: absolute;
+	top: 40%;
+	left: 60%;
+}
+
 .flex {
 	position: absolute;
 	margin-top: 5rem;
@@ -42,6 +61,7 @@ body {
 	position: absolute;
 	left: 27%;
 	top: 39%;
+
 }
 
 .back {
