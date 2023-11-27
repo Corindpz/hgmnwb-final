@@ -27,7 +27,13 @@ body {
 	left: 2%;
 	text-decoration: none;
 	color: white;
+	animation: blink 1s infinite;
+}
 
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
 }
 
 .restart:hover {
